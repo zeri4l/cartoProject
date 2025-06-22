@@ -35,6 +35,24 @@
           <button id="btn_select">적용하기</button>
           <input type="file" id="geojsonUpload" accept=".geojson,.json" />
         </div>
+        <div>
+          출발지:
+          <input
+            type="text"
+            id="startX"
+            placeholder="경도"
+            value="126.9281499"
+          />
+          <input
+            type="text"
+            id="startY"
+            placeholder="위도"
+            value="37.5262068"
+          />
+          도착지:
+          <input type="text" id="endX" placeholder="경도" value="126.8958164" />
+          <input type="text" id="endY" placeholder="위도" value="37.5262063" />
+        </div>
       </div>
     </div>
 
@@ -58,20 +76,6 @@
           width: "100%",
           height: "500px",
           zoom: 11,
-        });
-
-        marker_s = new Tmapv2.Marker({
-          position: new Tmapv2.LatLng(37.5262068, 126.9281499),
-          icon: "출발.jpeg",
-          iconSize: new Tmapv2.Size(32, 32),
-          map: map,
-        });
-
-        marker_e = new Tmapv2.Marker({
-          position: new Tmapv2.LatLng(37.5262063, 126.8958164),
-          icon: "도착.jpeg",
-          iconSize: new Tmapv2.Size(24, 38),
-          map: map,
         });
       }
 
@@ -117,6 +121,28 @@
       $("#btn_select").click(function () {
         resettingMap();
 
+        const startX = document.getElementById("startX").value;
+        const startY = document.getElementById("startY").value;
+        const endX = document.getElementById("endX").value;
+        const endY = document.getElementById("endY").value;
+
+        if (marker_s) marker_s.setMap(null);
+        if (marker_e) marker_e.setMap(null);
+
+        marker_s = new Tmapv2.Marker({
+          position: new Tmapv2.LatLng(startY, startX),
+          icon: "출발.jpeg",
+          iconSize: new Tmapv2.Size(32, 32),
+          map: map,
+        });
+
+        marker_e = new Tmapv2.Marker({
+          position: new Tmapv2.LatLng(endY, endX),
+          icon: "도착.jpeg",
+          iconSize: new Tmapv2.Size(24, 38),
+          map: map,
+        });
+
         const searchOption = $("#selectLevel").val();
         const trafficInfochk = $("#year").val();
         const headers = { appKey: "my3V8AntW6aJFirDGlo8Y2totMYfWsWVa6550hEn" };
@@ -126,10 +152,10 @@
           headers: headers,
           url: "https://apis.openapi.sk.com/tmap/routes?version=1&format=json",
           data: {
-            startX: "126.9281499",
-            startY: "37.5262068",
-            endX: "126.8958164",
-            endY: "37.5262063",
+            startX: startX,
+            startY: startY,
+            endX: endX,
+            endY: endY,
             reqCoordType: "WGS84GEO",
             resCoordType: "WGS84GEO",
             searchOption: searchOption,
