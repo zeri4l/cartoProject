@@ -1,4 +1,5 @@
 #header {
+  background-color: #a40f16;
   display: flex;
   align-items: center; /* 수직 정렬 */
   justify-content: center; /* 수평 가운데 정렬 */
@@ -14,5 +15,5 @@
 #banner {
   font-size: 20px;
   font-weight: bold;
-  color: #0077cc;
+  color: #ffffff;
 }

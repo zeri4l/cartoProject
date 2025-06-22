@@ -8,10 +8,10 @@ var geojsonPolygons = [];
 
 function initTmap() {
   map = new Tmapv2.Map("map_div", {
-    center: new Tmapv2.LatLng(37.49241689559544, 127.03171389453507),
+    center: new Tmapv2.LatLng(37.5232068, 126.9251499),
     width: "100%",
     height: "500px",
-    zoom: 11,
+    zoom: 13,
   });
 }
 
@@ -66,15 +66,15 @@ $("#btn_select").click(function () {
 
   marker_s = new Tmapv2.Marker({
     position: new Tmapv2.LatLng(startY, startX),
-    icon: "출발.jpeg",
-    iconSize: new Tmapv2.Size(32, 32),
+    icon: "쿠옹.png",
+    iconSize: new Tmapv2.Size(35, 35),
     map: map,
   });
 
   marker_e = new Tmapv2.Marker({
     position: new Tmapv2.LatLng(endY, endX),
-    icon: "도착.jpeg",
-    iconSize: new Tmapv2.Size(24, 38),
+    icon: "flflfl.png",
+    iconSize: new Tmapv2.Size(35, 38),
     map: map,
   });
 
