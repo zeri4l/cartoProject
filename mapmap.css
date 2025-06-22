@@ -1,0 +1,18 @@
+#header {
+  display: flex;
+  align-items: center; /* 수직 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+  padding: 10px;
+  gap: 15px; /* 이미지와 텍스트 사이 간격 */
+}
+
+#header img {
+  width: 280px; /* 적절한 크기로 조절 */
+  height: auto;
+}
+
+#banner {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0077cc;
+}
